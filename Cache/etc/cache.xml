@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="customcache" translate="label,description" instance="Brainvire\Cache\Model\Cache\Type">
+        <label>Webkul Custom Cache</label>
+        <description>Webkul Custom Cache Description.</description>
+    </type>
+</config>
