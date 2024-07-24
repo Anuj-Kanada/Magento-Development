@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- Define student_record table -->
+    <table name="student_record" resource="default" engine="innodb" comment="Student Record Table">
+        <!-- Define columns -->
+        <column xsi:type="int" name="student_id" padding="10" unsigned="true" nullable="false" comment="Student ID" identity="true"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Student Name"/>
+        <column xsi:type="datetime" name="dob" nullable="true" comment="Date of Birth"/>
+        <!-- <column xsi:type="decimal" name="gpa" scale="2" precision="5" nullable="true" comment="GPA"/> -->
+
+        <!-- Define primary key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="student_id"/>
+        </constraint>
+    </table>
+
+    <!-- Define course table -->
+    <table name="course" resource="default" engine="innodb" comment="Course Table">
+        <!-- Define columns -->
+        <column xsi:type="int" name="course_id" padding="10" unsigned="true" nullable="false" comment="Course ID" identity="true"/>
+        <column xsi:type="int" name="student_id" padding="10" unsigned="true" nullable="false" comment="Student ID"/>
+        <column xsi:type="varchar" name="course_name" nullable="false" length="255" comment="Course Name"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Course Description"/>
+
+        <!-- Define foreign key to student_record table -->
+        <constraint xsi:type="foreign" referenceId="COURSE_STUDENT_RECORD_STUDENT_ID_STUDENT_RECORD_STUDENT_ID" table="course" column="student_id" referenceTable="student_record" referenceColumn="student_id" onDelete="CASCADE"/>
+        
+        <!-- Define primary key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="course_id"/>
+        </constraint>
+        
+        <!-- Define unique key on course_name -->
+        <constraint xsi:type="unique" referenceId="UNIQUE_COURSE_NAME">
+            <column name="course_name"/>
+        </constraint>
+    </table>
+</schema>

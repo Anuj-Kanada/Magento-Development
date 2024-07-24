@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="customtab" translate="label" sortOrder="100">
+            <label>Custom Tab</label>
+        </tab>
+        <tab id="catalog" translate="label" sortOrder="200">
+            <label>Catalog</label>
+        </tab>
+
+        
+        <section id="customsection" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Custom Section</label>
+            <tab>customtab</tab>
+            <resource>Brainvire_Ug::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="text_field" translate="label comment tooltip" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Field</label>
+                    <comment>This is a text field.</comment>
+                    <tooltip>Tooltip for Text Field</tooltip>
+                </field>
+                <field id="password_field" translate="label comment" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password Field</label>
+                    <comment>Enter your password here.</comment>
+                    <validate>no-whitespace</validate>
+                </field>
+                <field id="multiselect_field" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Multiselect Field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select multiple options.</comment>
+                </field>
+                <field id="dropdown_field" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dropdown Field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select Yes or No.</comment>
+                </field>
+                <field id="depend_field" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dependent Field</label>
+                    <depends>
+                        <field id="dropdown_field">1</field>
+                    </depends>
+                    <comment>Depends on Dropdown Field.</comment>
+                </field>
+            </group>
+        </section>
+
+     
+        <section id="custom_section_for_catalog" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Custom Section for catalog</label>
+
+            <tab>catalog</tab>
+            <resource>Brainvire_Ug::config</resource>
+
+            <group id="catalog_setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Catalog Settings</label>
+                <field id="catalog_name" translate="label " type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Catalog Name</label>
+                    <comment>This is a text field.</comment>
+                </field>
+            </group> 
+        </section>
+    </system>
+</config>

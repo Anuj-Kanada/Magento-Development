@@ -1,0 +1,25 @@
+{
+    "student_record": {
+        "column": {
+            "student_id": true,
+            "name": true,
+            "dob": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "course": {
+        "column": {
+            "course_id": true,
+            "student_id": true,
+            "course_name": true,
+            "description": true
+        },
+        "constraint": {
+            "COURSE_STUDENT_ID_STUDENT_RECORD_STUDENT_ID": true,
+            "PRIMARY": true,
+            "COURSE_COURSE_NAME": true
+        }
+    }
+}
