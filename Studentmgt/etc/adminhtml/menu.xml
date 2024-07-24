@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Brainvire_Studentmgt::students" title="Student Management" module="Brainvire_Studentmgt" sortOrder="10" resource="Brainvire_Studentmgt::students"/>
+        <add id="Brainvire_Studentmgt::student" title="Student" module="Brainvire_Studentmgt" sortOrder="10" parent="Brainvire_Studentmgt::students" action="studentmgt/student/index" resource="Brainvire_Studentmgt::student"/>
+        <add id="Brainvire_Studentmgt::department" title="Department" module="Brainvire_Studentmgt" sortOrder="20" parent="Brainvire_Studentmgt::students" action="studentmgt/department/index" resource="Brainvire_Studentmgt::department"/>
+    </menu>
+</config>

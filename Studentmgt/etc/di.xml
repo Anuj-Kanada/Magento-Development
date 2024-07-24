@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">  
+    <virtualType name="Brainvire\Studentmgt\Model\ResourceModel\Student\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">student</argument>
+            <argument name="resourceModel" xsi:type="string">Brainvire\Studentmgt\Model\ResourceModel\Student</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Brainvire\Studentmgt\Model\ResourceModel\Department\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">department</argument>
+            <argument name="resourceModel" xsi:type="string">Brainvire\Studentmgt\Model\ResourceModel\Department</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="student_listing_data_source" xsi:type="string">Brainvire\Studentmgt\Model\ResourceModel\Student\Grid\Collection</item>
+                <item name="department_listing_data_source" xsi:type="string">Brainvire\Studentmgt\Model\ResourceModel\Department\Grid\Collection</item>
+            </argument>
+        </arguments>    
+    </type>
+</config>

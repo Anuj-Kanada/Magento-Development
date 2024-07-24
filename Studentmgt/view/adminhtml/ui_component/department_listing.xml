@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">department_listing.department_listing_data_source</item>
+            <item name="deps" xsi:type="string">department_listing.department_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">department_listing_data_source_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/add</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="department_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">department_listing_data_source</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="primaryFieldName" xsi:type="string">department_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">department_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+        <aclResource>Brainvire_Studentmgt::department</aclResource>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+        <!-- Bookmark applied filter in Ui grid page, it save the applied filter until we doen't clear -->
+        <bookmark name="bookmarks"/>
+        <!-- Search feild in Grid Page, whatever we search it fetch from table -->
+        <!-- <filterSearch name="fulltext"/> -->
+        <!-- Filter : This use for apply filter on grid table data, we can filter as per requriment with multiple filters  -->
+        <filters name="listing_filters"/>
+        <!-- Column Control : it for visbilty of column on grid, we can use checkbox to select -->
+        <columnsControls name="columns_controls"/>
+        <!-- Export Button : Their is multiple option to download the Grid Data in CSV file or in other formate -->
+        <exportButton name="export_button"/>
+        <!-- Mass Action : Multiple or mass chanages in data of grid we can use this option, like Delete mutiple rows, change status etc. -->
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">department_listing.department_listing.department_listing_data_source_columns.ids</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">department_id</item>
+                </item>
+            </argument>
+            <action name="remove">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">remove</item>
+                        <item name="label" xsi:type="string" translate="true">Remove</item>
+                        <item name="url" xsi:type="url" path="studentmgt/department/massDelete"/>
+                    </item>
+                </argument>
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <!-- Pagination: to fetch data on grid page  how much entries we want on page-->
+        <paging name="listing_paging"/>
+    </container>
+    <columns name="department_listing_data_source_columns">
+        <settings>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="studentmgt/department/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">department_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">department_listing.department_listing.department_listing_data_source_columns.ids</param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">department_listing.department_listing.department_listing_data_source_columns.actions</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">department_id</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="department_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Department Id</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+
+                </item>
+            </argument>
+        </column>
+        <column name="department">
+            <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">Brainvire\Studentmgt\Model\Source\DepartmentOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Department Name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="editorType" xsi:type="string">text</item>
+                </item>
+
+            </argument>
+            <settings>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>   
+                </editor>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="Brainvire\Studentmgt\Ui\Component\Listing\Column\DepartmentAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">department_id</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

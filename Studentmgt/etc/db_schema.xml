@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="student" resource="default" engine="innodb" comment="Student Management ">
+        <column xsi:type="smallint" name="student_id" nullable="false" identity="true" comment="Student Id" />
+        <column xsi:type="varchar" name="first_name" nullable="false" length="30" comment="First Name" />
+        <column xsi:type="varchar" name="last_name" nullable="false" length="30" comment="Last Name" />
+        <column xsi:type="varchar" name="email" nullable="false" length="30" comment="Email" />
+        <column xsi:type="date" name="dob" nullable="false" comment="DOB" />
+        <column xsi:type="varchar" name="phone" nullable="false" length="13" comment="Phone Number" />
+        <column xsi:type="smallint" name="department" nullable="false" comment="Department" />
+        <column xsi:type="smallint" name="status" nullable="false" comment="Status" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="student_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="STUDENT_EMAIL">
+            <column name="email"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="STUDENT_DEPARTMENT_DEPARTMENT_DEPARTMEN_ID" table="student" column="department" referenceTable="department" referenceColumn="department_id" onDelete="CASCADE"/>
+    </table>
+    <table name="department" resource="default" engine="innodb" comment="Department Management">
+        <column xsi:type="smallint" name="department_id" nullable="false" identity="true" comment="Department Id" />
+        <column xsi:type="varchar" name="department" nullable="false" length="30" comment="Department" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="department_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="DEPARTMENT_DEPARTMENT">
+            <column name="department"/>
+        </constraint>
+    </table>
+</schema>
