@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="brainvire_plugins_product_name" type="Brainvire\Plugins\Plugin\ProductPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Controller\Product\View">
+      <plugin name="Brainvire_Plugins::change_product_view" type="Brainvire\Plugins\Plugin\Catalog\Controller\Product\View" sortOrder="1" />
+   </type>
+   <type name="Magento\Checkout\Model\Cart">
+        <plugin name="BrainvireCart" type="Brainvire\Plugins\Model\Cart" />
+    </type>
+</config>
