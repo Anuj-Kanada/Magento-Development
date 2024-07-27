@@ -1,0 +1,11 @@
+<?php
+/** @var ProductData $productData */
+$productData = $block->getData('view_model');
+?>
+
+<h1>
+<?=
+     $productData->getProductBySku('sku');
+?>
+
+</h1>

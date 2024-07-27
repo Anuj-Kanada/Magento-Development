@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page>
+    <body>
+        <referenceBlock name="product.info.main">
+        <block class="Magento\Framework\View\Element\Template" name="blocks" template="Rh_Bv::index.phtml">
+        <arguments>
+                <argument name="view_model" xsi:type="object">Rh\Bv\ViewModel\ProductViewModel</argument>
+            </arguments>
+        </block>
+            
+        </referenceBlock>
+ 
+    </body>
+</page>

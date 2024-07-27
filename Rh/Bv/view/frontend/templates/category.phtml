@@ -1,0 +1,11 @@
+<?php
+/** @var ProductData $productData */
+$categoryData = $block->getData('view_model');
+?>
+
+<h1>
+<?=
+     $categoryData->getCategoryByName('name');
+?>
+
+</h1>
