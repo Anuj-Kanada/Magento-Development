@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_controller_product_view">
+        <observer name="BraivireProductData" instance="Brainvire\Event\Observer\Product\Data" />
+    </event>
+   <event name="braivire_event_display_text">
+        <observer name="bv_display_text" instance="Brainvire\Event\Observer\ChangeDisplayText" />
+    </event>
+</config>
