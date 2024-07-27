@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Place the MSQ block after the add to cart button -->
+        <referenceContainer name="product.info.form.content">
+            <block class="Magento\Framework\View\Element\Template" name="custom.product.min.sale.qty" template="Brainvire_Revise::product/min-sale-qty.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Brainvire\Revise\ViewModel\ProductMinimumSalableQty</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="product.info.stock.sku">
+            <block class="Magento\Framework\View\Element\Template" name="custom.product.qty" template="Brainvire_Revise::product/left-qty.phtml">
+
+            <arguments>
+                <argument name="view_model" xsi:type="object">Brainvire\Revise\ViewModel\Stock</argument>
+            </arguments>
+            </block>
+        </referenceBlock>
+
+    </body>
+</page>

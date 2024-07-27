@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_cart_add">
+        <observer name="brainvire_revise_checkout_cart_add" instance="Brainvire\Revise\Observer\CheckoutCartAddObserver" />
+    </event>
+</config>

@@ -1,0 +1,11 @@
+<?php
+/** @var \Brainvire\Revise\ViewModel\ProductMinimumSalableQty $viewModel */
+$viewModel = $block->getData('view_model');
+$minSaleQty = $viewModel->getMinimumSalableQty();
+?>
+
+<?php if ($minSaleQty !== null): ?>
+    <div class="min-sale-qty">
+        <strong>Minimum Sale Quantity:</strong> <?php echo $minSaleQty; ?>
+    </div>
+<?php endif; ?>

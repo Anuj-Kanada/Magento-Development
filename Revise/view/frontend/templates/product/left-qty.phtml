@@ -1,0 +1,14 @@
+<?php
+$product = $block->getProduct();
+if ($product && $product->getId()) {
+    /** @var Brainvire\Revise\ViewModel\Stock $viewModel */
+    $viewModel = $block->getData('view_model');
+    ?>
+    <div class="stock-quantity">
+        <?php echo __('Stock Quantity: %1', $viewModel->getStock($product)); ?>
+    </div>
+<?php } else { ?>
+    <div class="stock-quantity">
+        <?php echo __('Product not found or invalid'); ?>
+    </div>
+<?php } ?>
