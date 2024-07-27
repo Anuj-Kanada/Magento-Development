@@ -1,0 +1,11 @@
+<?php $formData = $block->getFormData(); ?>
+<div class="field mobile_number required">
+    <label for="mobile_number" class="label"><span><?= $block->escapeHtml(__('Mobile Number')) ?></span></label>
+    <div class="control">
+        <input type="text"
+               name="mobile_number" id="mobile_number"
+               value="<?= $escaper->escapeHtml($formData->getMobileNumber()) ?>"
+               title="<?= $block->escapeHtmlAttr(__('Mobile Number')) ?>" 
+               class="input-text" data-validate="{required:true}" autocomplete="off">
+    </div>
+</div>

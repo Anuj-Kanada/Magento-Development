@@ -1,0 +1,20 @@
+<?php
+$mobileNumberValue = '';
+$customer = $block->getCustomer();
+
+if ($customer && $customer->getId()) {
+    $mobileNumberAttribute = $customer->getCustomAttribute('mobile_number');
+    if ($mobileNumberAttribute !== null) {
+        $mobileNumberValue = $mobileNumberAttribute->getValue();
+    }
+}
+?> 
+<div class="field mobile_number required">
+    <label for="mobile_number" class="label"><span><?= $block->escapeHtml(__('Mobile Number')) ?></span></label>
+    <div class="control">
+        <input type="text" name="mobile_number" id="mobile_number" 
+            value="<?= $block->escapeHtmlAttr($mobileNumberValue) ?>"
+            title="<?= $block->escapeHtmlAttr(__('Mobile Number')) ?>" 
+            class="input-text" data-validate="{required:true}" autocomplete="off">
+    </div>
+</div>
